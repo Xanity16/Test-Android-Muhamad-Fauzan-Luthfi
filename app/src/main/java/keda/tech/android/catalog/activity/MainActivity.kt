@@ -135,23 +135,41 @@ class MainActivity : AppCompatActivity(), OnChangeProductFavoriteListener {
             }
 
             override fun afterTextChanged(s: Editable) {
-                positionScroll = 0
-                productViewModel.productFilter(s.toString())
-                    .observe(this@MainActivity) { products ->
-                        if (products.isNotEmpty()) {
-                            binding.rvProduct.visibility = View.VISIBLE
-                            binding.tvDataEmpty.visibility = View.GONE
-                        } else {
-                            binding.rvProduct.visibility = View.GONE
-                            binding.tvDataEmpty.visibility = View.VISIBLE
+                if (selectedFilterFavorite) {
+                    productViewModel.productFavoriteFilter(s.toString())
+                        .observe(this@MainActivity) { products ->
+                            if (products.isNotEmpty()) {
+                                binding.rvProduct.visibility = View.VISIBLE
+                                binding.tvDataEmpty.visibility = View.GONE
+                            } else {
+                                binding.rvProduct.visibility = View.GONE
+                                binding.tvDataEmpty.visibility = View.VISIBLE
+                            }
+                            binding.rvProduct.scrollToPosition(positionScroll)
+                            binding.rvProduct.adapter = ProductAdapter(
+                                this@MainActivity,
+                                products,
+                                this@MainActivity
+                            )
                         }
-                        binding.rvProduct.scrollToPosition(positionScroll)
-                        binding.rvProduct.adapter = ProductAdapter(
-                            this@MainActivity,
-                            products,
-                            this@MainActivity
-                        )
-                    }
+                } else {
+                    productViewModel.productFilter(s.toString())
+                        .observe(this@MainActivity) { products ->
+                            if (products.isNotEmpty()) {
+                                binding.rvProduct.visibility = View.VISIBLE
+                                binding.tvDataEmpty.visibility = View.GONE
+                            } else {
+                                binding.rvProduct.visibility = View.GONE
+                                binding.tvDataEmpty.visibility = View.VISIBLE
+                            }
+                            binding.rvProduct.scrollToPosition(positionScroll)
+                            binding.rvProduct.adapter = ProductAdapter(
+                                this@MainActivity,
+                                products,
+                                this@MainActivity
+                            )
+                        }
+                }
             }
         })
     }
@@ -169,6 +187,7 @@ class MainActivity : AppCompatActivity(), OnChangeProductFavoriteListener {
             }
         }, onPostExecute = {
             Log.i("MainActivity", it)
+            binding.tieSearch.setText("")
             pDialog.dismissAllowingStateLoss()
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })

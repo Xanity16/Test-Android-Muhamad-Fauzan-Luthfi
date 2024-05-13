@@ -81,7 +81,6 @@ class FavoriteActivity : AppCompatActivity(), OnChangeProductFavoriteListener {
             }
 
             override fun afterTextChanged(s: Editable) {
-                positionScroll = 0
                 productViewModel.productFavoriteFilter(s.toString())
                     .observe(this@FavoriteActivity) { products ->
                         if (products.isNotEmpty()) {
@@ -115,6 +114,7 @@ class FavoriteActivity : AppCompatActivity(), OnChangeProductFavoriteListener {
             }
         }, onPostExecute = {
             Log.i("MainActivity", it)
+            binding.tieSearch.setText("")
             pDialog.dismissAllowingStateLoss()
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })

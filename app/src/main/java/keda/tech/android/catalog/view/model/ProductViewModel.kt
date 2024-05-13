@@ -20,12 +20,20 @@ class ProductViewModel(application: Application) : ViewModel() {
     }
 
     fun productFilter(search: String): LiveData<List<Product>> {
-        val searchParam = "%$search%"
-        return db.dataDao().getAllProductFilter(searchParam)
+        if (search.isNotEmpty()) {
+            val searchParam = "%$search%"
+            return db.dataDao().getAllProductFilter(searchParam)
+        } else {
+            return db.dataDao().getAllProduct()
+        }
     }
 
     fun productFavoriteFilter(search: String): LiveData<List<Product>> {
-        val searchParam = "%$search%"
-        return db.dataDao().getAllProductFavoriteFilter(searchParam)
+        if (search.isNotEmpty()) {
+            val searchParam = "%$search%"
+            return db.dataDao().getAllProductFavoriteFilter(searchParam)
+        } else {
+            return db.dataDao().getAllProductFavorite()
+        }
     }
 }
