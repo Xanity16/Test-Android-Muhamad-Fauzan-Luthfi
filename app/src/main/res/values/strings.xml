@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Keda Tech Android Catalog</string>
+    <string name="action_settings">Settings</string>
+    <string name="lbl_please_wait_a_moment">Please wait a moment 😊</string>
+    <string name="lbl_product">Product</string>
+    <string name="lbl_add_favorite">Add Favorite</string>
+    <string name="lbl_example_money">Rp 100.000</string>
+    <string name="lbl_filter">Filter</string>
+    <string name="lbl_favorite">Favorite</string>
+    <string name="lbl_un_favorite">Remove Favorite</string>
+    <string name="lbl_search_product">Search Product</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_search_product_favorite">Search Product Favorite</string>
+    <string name="lbl_data_is_empty">Data is empty</string>
+    <string name="lbl_please_select_filter">Please Select Filter</string>
+</resources>
