@@ -19,8 +19,17 @@ interface DataDao {
     @Query("UPDATE product SET is_favorite=:isFavorite WHERE id = :id")
     fun updateProductFavorite(isFavorite: Int, id: String): Int
 
+    @Query("SELECT * FROM product WHERE id=:id")
+    fun getProduct(id: String): LiveData<Product>
+
     @Query("SELECT COUNT(id) FROM product")
     fun getCountAllProduct(): Int
+
+    @Query("SELECT COUNT(id) FROM product WHERE is_favorite = 1")
+    fun getCountAllProductFavorite(): Int
+
+    @Query("SELECT COUNT(id) FROM product WHERE is_favorite = 0")
+    fun getCountAllProductUnFavorite(): Int
 
     @Query("SELECT id, name, description, price, is_favorite FROM product")
     fun getAllProduct(): LiveData<List<Product>>

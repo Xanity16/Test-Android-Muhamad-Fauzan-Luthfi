@@ -19,6 +19,8 @@ kspV = "1.9.24-1.0.20"
 lottieV = "6.4.0"
 lifecycleV = "2.7.0"
 recyclerviewV = "1.3.2"
+junitKtx = "1.1.5"
+coreTesting = "2.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +42,8 @@ lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieV
 viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleV" }
 liveData = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleV" }
 recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerviewV" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
+coreTesting = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTesting" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

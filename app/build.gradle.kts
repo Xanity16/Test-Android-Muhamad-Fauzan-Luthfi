@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.multidex)
     implementation(libs.coroutines)
     implementation(libs.roomRuntime)
+    implementation(libs.androidx.junit.ktx)
     ksp(libs.roomCompiler)
     implementation(libs.lottie)
     implementation(libs.viewModel)
@@ -59,4 +60,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.coreTesting)
 }
